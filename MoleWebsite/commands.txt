@@ -1,0 +1,12 @@
+### script.sh ### (for user data of EC2)
+#!/bin/bash
+sudo su
+yum update -y
+yum install -y httpd
+cd /var/www/html
+wget https://github.com/e-miguel/Mole-Project/archive/refs/heads/main.zip
+unzip main.zip
+cp -r /var/www/html/Mole-Project-main/* /var/www/html
+rm -rf main.zip Mole-Project-main
+systemctl enable httpd
+systemctl start httpd
