@@ -61,3 +61,21 @@ sudo vi .env
 
 #13 restart server
 sudo service httpd restart
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+# Powershell script
+# Check if ssh-agent is running
+Get-Service ssh-agent
+
+# Start the service
+Start-Service ssh-agent
+
+# This should return a status of Running
+Get-Service ssh-agent
+
+# Now load your key files into the ssh-agent
+ssh-add C:\Users\Admin\my-ec2key.pem
+
+# SSH into the instance (bastion host) in the public subnet. Remember to allow agent forwarding
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+if (env('APP_ENV') === 'production') {\Illuminate\Support\Facades\URL::forceScheme('https');}
